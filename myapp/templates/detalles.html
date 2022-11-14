@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h1> Correspondencias </h1>
+</div>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar"
+            value="{{ request.POST.buscar }}">
+        <div class="input-group-append">
+            <input class="btn btn-primary" type="submit" value="Buscar">
+            <i class="fas fa-search fa-sm"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-bordered" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <td>Residencias:</td>
+                <td>Fecha:</td>
+                <td>propietario:</td>
+                <td>retirado:</td>
+                <td>Recivido por:</td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for p in detalle%}
+            <tr>
+               <td>{{p.residencia}}</td>
+
+                <td>{{p.fecha}}</td>
+
+                <td>{{p.recivio}}</td>
+
+                <td>{{p.entregado}}</td>
+
+                <td>{{p.residencia.Propietario}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

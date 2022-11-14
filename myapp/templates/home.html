@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<div class="container-fluid">
+<h1> Correspondencias </h1>
+</div>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+method="POST">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." name="buscar" value="{{ request.POST.buscar }}">
+    <div class="input-group-append">
+        <input class="btn btn-primary" type="submit" value="Buscar">
+        <i class="fas fa-search fa-sm"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-bordered"  width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Residencias</th>
+          <th><a href="{% url 'detalles'%}"><button type="button" class="btn btn-link">Ver con mas detalles</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in casas %}
+          <tr>
+            <td>{{r.residencia}} </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endblock %}

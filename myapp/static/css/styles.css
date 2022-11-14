@@ -1,0 +1,21 @@
+
+th,div{
+    display: flex;
+    justify-content:center;
+}
+
+btn btn-primary{
+    padding-left: 90%;
+    width: 500px;
+    height: 500px;
+}
+
+h1{
+    display: flex;
+    justify-content:center;   
+}
+
+form{
+    display: flex;
+    justify-content:right;  
+}
